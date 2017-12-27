@@ -1,0 +1,78 @@
+name:                cuba
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/stla/cuba#readme
+license:             GPL-3
+author:              Stéphane Laurent
+maintainer:          laurent_step@yahoo.fr
+copyright:           2017 Stéphane Laurent
+category:            Math, Numerical
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Common
+                     , Cuhre
+                     , Suave
+                     , Vegas
+  build-depends:       base >= 4.7 && < 5
+  default-language:    Haskell2010
+  include-dirs:        C
+  C-sources:           C/common_RCuba.c
+                     , C/cuhre_common.c
+                     , C/cuhre_DoSample.c
+                     , C/cuhre_Integrate.c
+                     , C/cuhre_Rule.c
+                     , C/cuhre_Cuhre.c
+                    --  , C/divonne_common.c
+                    --  , C/divonne_Divonne.c
+                    --  , C/divonne_DoSample.c
+                    --  , C/divonne_Explore.c
+                    --  , C/divonne_FindMinimum.c
+                    --  , C/divonne_Integrate.c
+                    --  , C/divonne_Rule.c
+                    --  , C/divonne_Sample.c
+                    --  , C/divonne_Split.c
+                     , C/suave_common.c
+                     , C/suave_DoSample.c
+                     , C/suave_Grid.c
+                     , C/suave_Integrate.c
+                     , C/suave_Sample.c
+                     , C/suave_Suave.c
+                     , C/common_Random.c
+                     , C/vegas_common.c
+                     , C/vegas_DoSample.c
+                     , C/vegas_Grid.c
+                     , C/vegas_Integrate.c
+                     , C/vegas_Vegas.c
+
+executable testcuba
+  buildable: True
+  hs-source-dirs:      src-exec
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , cuba
+
+executable testsuave
+  buildable: True
+  hs-source-dirs:      src-exec/Suave
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , cuba
+
+executable testvegas
+  buildable: True
+  hs-source-dirs:      src-exec/Vegas
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , cuba
+
+source-repository head
+  type:     git
+  location: https://github.com/stla/cuba
